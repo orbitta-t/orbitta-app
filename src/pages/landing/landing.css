@@ -1,0 +1,1016 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: #000303;
+}
+#tela1{
+    height: 99vh;
+}
+
+#container-curvo {
+  /* Este é o "cortador" da sua curva */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh; /* Ajuste a altura para o ponto de corte */
+  overflow: hidden; /* **O SEGREDO ESTÁ AQUI** */
+}
+
+#tela2{
+position: absolute;
+  bottom: -190vh;
+  height: 200vh;
+  width: 100%;
+  Left: 0;
+  border-top-left-radius: 50vw 11vh;
+  border-top-right-radius: 50vw 11vh;
+  background-color: #090F24;
+  z-index: 1;
+  
+
+ box-shadow:
+    /* Sombra Externa (para cima, simulando a luz no céu) */
+    0 -20px 100px 20px rgba(255, 255, 255, 0.3), /* Mais suave */
+    /* Sombra Interna (para o brilho na parte de dentro da curva) */
+    0 -1px 15px -1px rgba(255, 255, 255, 0.5) inset;
+}
+
+#tela2b{
+    height: 200vh;
+    background-color: #090F24;
+
+}
+
+#tela3 {
+  height: 120vh;
+  width: 100%;
+  background-image: linear-gradient(to bottom, #090F24 0%, #ffffff 15%);
+}
+
+header {
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #000303;
+    height: 5vh;
+    position: fixed;
+    width: 100%;
+    border-radius: 1vh;
+    z-index: 10;
+}
+#header1{
+    display: flex;
+    flex-direction: row;
+    gap: 5vh;
+    margin-left: 5vh;
+    justify-content: center;
+}
+#header2 button {
+    display: flex;
+    flex-direction: row;
+    border: 0.5vh solid #E09F7D;
+    border-radius: 1vh;
+    
+    border-image: linear-gradient(to right, #E09F7D, #ffffff) 1;
+    border-radius: 1vh;
+    background: none; 
+    padding: 1vh; 
+    cursor: pointer; 
+    color: #ffffff;
+    margin-right: 5vh;
+}
+.cbox{
+    margin-top: 50vh;
+    z-index: 2;
+    margin-left: 42vh;
+}
+#titleiconbox{
+    align-self: center;
+    justify-self: center;
+    margin-right: 100vh;
+}
+#titleiconbox2{
+    align-self: center;
+    justify-self: center;
+}
+
+.imgset1{
+   margin-left: 50vh;
+}
+
+.imgset2{
+    margin-right: 100vh;
+}
+.flexrow1{
+  display: flex;
+  flex-direction: row;
+  gap: 4vh;
+  margin-top: 50vh;
+}
+.flexrow{
+  display: flex;
+  flex-direction: row;
+}
+.flowcol{
+  display: flex;
+  flex-direction: column;
+}
+.center{
+    justify-self: center;
+}
+.center2{
+    align-self: center;
+    align-items: center;
+    align-content: center;
+}
+.centertext{
+    align-self: center;
+    justify-self: center;
+}
+
+.white{
+    color: #ffffff;
+}
+.orange{
+  color: #E09F7D;
+}
+
+.box1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.box2{
+  background-color: transparent;
+  width: 80vh;
+  height: 80vh;
+  margin-left: 10vh;
+}
+.minbox1{
+    display: flex;
+    margin-left: 5vh;
+    width: 40%;
+    flex-direction: column;
+    justify-items: self-end;
+}
+.minbox2{
+    width: 40%;
+    margin-right: 5vh;
+}
+.minbox3{
+  width: 80%;
+  color: #090F24;
+}
+.retrato1{
+  background-color: #012873;
+  border-radius: 5vh;
+  height: 50vh;
+  width: 80vh;
+  margin-top: 15vh;
+}
+.retratomin1{
+  position: absolute;
+  background-color: #000303;
+  border-radius: 2vh;
+  height: 25vh;
+  width: 40vh;
+}
+.right{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.left{
+    display: flex;
+    flex-direction: row;
+}
+
+.marginb{
+    margin-bottom: 20vh;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.icon{
+    height: 50vh;
+}
+.icon2{
+  height: 10vh;
+  margin-left: 0.8vh;
+}
+.icon3{
+  height: 12vh;
+}
+.iconback{
+  background-color: #cfd0ce;
+  height: 12vh;
+  width: 25vh;
+  align-self: center;
+  align-content: center;
+  margin-right: 10vh;
+  border-radius: 2vh;
+}
+.iconback2{
+  background-color: #e09f7d;
+  height: 12vh;
+  width: 20vh;
+  align-self: center;
+  align-content: center;
+  margin-right: 10vh;
+  border-radius: 2vh;
+}
+.iconback3{
+  background-color: #cfd0ce;
+  height: 12vh;
+  width: 20vh;
+  align-self: center;
+  align-content: center;
+  margin-right: 10vh;
+  border-radius: 2vh;
+}
+
+.position1{
+    left: 10;
+}
+
+.titleofc{
+    font-size: 10vh;
+    margin-left: 4vh;
+    letter-spacing: 5vh;
+}
+.title{
+    font-size: 5vh;
+}
+.titlemain{
+  font-size: 10vh;
+}
+.title2{
+    font-size: 4vh;
+}
+
+.text{
+    font-size: 3vh;
+}
+.margin1{
+  margin-top: 10vh;
+}
+
+
+.float {
+  animation: flutuar 3s ease-in-out infinite; /* Nome da animação, duração, estilo e repetição */
+}
+
+
+.gradient-orange{
+  background: linear-gradient(to bottom, #ffffff, #e09f7d);
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  background-clip: text;
+  color: transparent;
+}
+
+
+@keyframes flutuar {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+#tela1{
+  background: radial-gradient(circle at bottom, #012873 0%, #000303 80%);
+}
+
+/* ======= ESTRELAS ======= */
+.stars {
+  position: absolute;
+  top: 6vh;
+  left: 0;
+  width: 100%;
+  height: 90vh;
+  background: transparent;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* ======= ANÉIS CENTRAIS ======= */
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotateRing 30s linear infinite;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.ring.small {
+  width: 250px;
+  height: 250px;
+  animation-duration: 25s;
+}
+
+.ring.medium {
+  width: 450px;
+  height: 450px;
+  animation-duration: 40s;
+}
+
+.ring.large {
+  width: 650px;
+  height: 650px;
+  animation-duration: 55s;
+}
+
+/* ======= ANÉIS GALÁXIA ======= */
+.galaxy-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotateX(65deg) rotateZ(25deg); /* Inclinação */
+  animation: rotateGalaxy 90s linear infinite;
+  filter: blur(1px);
+  z-index: 0;
+}
+
+.galaxy-ring.one {
+  width: 800px;
+  height: 400px;
+  animation-duration: 120s;
+}
+
+.galaxy-ring.two {
+  width: 1100px;
+  height: 500px;
+  opacity: 0.08;
+  animation-duration: 150s;
+}
+
+@keyframes rotateRing {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes rotateGalaxy {
+  from {
+    transform: translate(-50%, -50%) rotateX(65deg) rotateZ(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(65deg) rotateZ(360deg);
+  }
+}
+
+
+
+/*================================*/
+
+#tela3 {
+  position: relative;
+  background-image: linear-gradient(to bottom, #090F24 0%, #ffffff 15%);
+  padding: 6rem 0 6rem;
+}
+
+/* wrapper centralizado */
+#tela3 .t3-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  margin-top: 50vh;
+}
+
+/* título centralizado (mantém aparência semelhante ao seu design) */
+#tela3 .t3-title {
+  text-align: center;
+  font-size: 6rem;      /* ajuste se necessário */
+  line-height: 1;
+  margin: 0 0 3.5rem;
+  font-weight: 700;
+  color: #0b0d23;
+}
+#tela3 .t3-title .orange { color: #E09F7D; margin-left: .6rem; }
+
+/* grid com duas colunas */
+#tela3 .t3-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* === LADO ESQUERDO: cartões sobrepostos === */
+#tela3 .t3-left {
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* cartão maior */
+#tela3 .t3-card-large {
+  width: 360px;
+  height: 230px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 16px 30px rgba(9,11,15,0.08);
+  position: relative;
+  overflow: visible;
+}
+
+/* bolinha no canto superior direito do cartão maior */
+#tela3 .t3-card-dot {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #000;                /* círculo preto */
+  border: 4px solid #00aaff;      /* borda azul brilhante */
+  box-sizing: border-box;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* cartão menor sobreposto (posicionado relativamente ao .t3-left) */
+#tela3 .t3-card-small {
+  width: 220px;
+  height: 140px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 16px 30px rgba(9,11,15,0.08);
+  position: absolute;
+  top: 130px;
+  left: 240px;
+  transform: translateX(12px);
+}
+
+/* === LADO DIREITO: features === */
+#tela3 .t3-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-top: 10px; /* alinha com os cartões à esquerda */
+}
+
+/* cada linha de feature (ícone + texto) */
+#tela3 .t3-feature {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* ícone quadrado com bordas arredondadas */
+#tela3 .t3-feature-icon {
+  width: 84px;
+  height: 84px;
+  border-radius: 12px;
+  background: #cfd0ce; /* padrão cinza claro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* variação pra ícone cor de pêssego */
+#tela3 .t3-feature-icon--peach {
+  background: #e09f7d;
+}
+
+/* redimensiona imagens internas dos ícones */
+#tela3 .t3-feature-icon img {
+  max-width: 56%;
+  max-height: 56%;
+  display: block;
+}
+
+/* texto da feature */
+#tela3 .t3-feature-text h2 {
+  margin: 0 0 .6rem 0;
+  font-size: 2.4rem;
+  color: #0b0d23;
+}
+#tela3 .t3-feature-text p {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #0b0d23;
+  line-height: 1.5;
+  max-width: 44ch;
+}
+
+/* Responsividade: em telas pequenas empilha as colunas */
+@media (max-width: 980px) {
+  #tela3 .t3-grid {
+    grid-template-columns: 1fr;
+  }
+  #tela3 .t3-left {
+    margin-bottom: 2rem;
+  }
+  #tela3 .t3-card-small {
+    position: relative;
+    top: 1rem;
+    left: 0;
+    transform: none;
+  }
+  #tela3 .t3-title {
+    font-size: 4.2rem;
+  }
+}
+
+/* =======================
+   TELA 4 - Funcionalidades
+   ======================= */
+#tela4 {
+  background: #ffffff;
+  padding: 8rem 0;
+}
+
+#tela4 .t4-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* título */
+#tela4 .t4-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #0b0d23;
+  margin-bottom: 4rem;
+  text-align: left;
+}
+
+/* layout em duas colunas */
+#tela4 .t4-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* ======== ESQUERDA ======== */
+#tela4 .t4-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#tela4 .t4-feature {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+#tela4 .t4-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #E09F7D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+#tela4 .t4-text h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+  color: #E09F7D;
+}
+
+#tela4 .t4-text p {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #0b0d23;
+}
+
+/* ======== DIREITA ======== */
+#tela4 .t4-right {
+  display: flex;
+  justify-content: center;
+}
+
+#tela4 .t4-card {
+  position: relative;
+  width: 300px;
+  height: 380px;
+  background: linear-gradient(to bottom, #F7C9AE 0%, #ffffff 50%, #E09F7D 100%);
+  border-radius: 18px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* imagem da pessoa */
+#tela4 .t4-person {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  z-index: 2;
+}
+
+/* texto do card */
+#tela4 .t4-card-content {
+  background: rgba(255,255,255,0.9);
+  padding: 2rem;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+#tela4 .t4-card-content h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: #0b0d23;
+  font-weight: 700;
+}
+
+#tela4 .t4-card-content p {
+  margin-top: .5rem;
+  font-size: 1.4rem;
+  color: #4a4a4a;
+}
+
+/* ======== RESPONSIVO ======== */
+@media (max-width: 900px) {
+  #tela4 .t4-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  #tela4 .t4-left {
+    align-items: center;
+  }
+
+  #tela4 .t4-feature {
+    justify-content: center;
+  }
+}
+
+/* =======================
+   TELA 5 - Funcionalidades (Colaborador)
+   ======================= */
+#tela5 {
+  background: #ffffff;
+  padding: 8rem 0;
+}
+
+#tela5 .t5-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* layout em duas colunas */
+#tela5 .t5-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* ======== ESQUERDA ======== */
+#tela5 .t5-left {
+  display: flex;
+  justify-content: center;
+}
+
+#tela5 .t5-card {
+  position: relative;
+  width: 300px;
+  height: 380px;
+  background: linear-gradient(to bottom, #F7C9AE 0%, #ffffff 50%, #E09F7D 100%);
+  border-radius: 18px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+}
+
+#tela5 .t5-person {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  z-index: 2;
+}
+
+#tela5 .t5-card-content {
+  background: rgba(255,255,255,0.9);
+  padding: 2rem;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+#tela5 .t5-card-content h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: #0b0d23;
+  font-weight: 700;
+}
+
+#tela5 .t5-card-content p {
+  margin-top: .5rem;
+  font-size: 1.4rem;
+  color: #4a4a4a;
+}
+
+/* ======== DIREITA ======== */
+#tela5 .t5-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#tela5 .t5-feature {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* <-- Mantém tudo alinhado à direita */
+  gap: 1.5rem; /* Espaço fixo entre o texto e o ícone */
+  margin-right: 15vh;
+}
+
+#tela5 .t5-text h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+  color: #4a4a4a;
+  text-align: right;
+}
+
+#tela5 .t5-text p {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #0b0d23;
+  text-align: right;
+}
+
+#tela5 .t5-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #E09F7D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+/* ======== RESPONSIVO ======== */
+@media (max-width: 900px) {
+  #tela5 .t5-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  #tela5 .t5-feature {
+    flex-direction: column-reverse;
+    gap: .5rem;
+  }
+
+  #tela5 .t5-text h3,
+  #tela5 .t5-text p {
+    text-align: center;
+  }
+}
+
+/* ======================
+   TELA 6 - As Leis da Nossa Órbita
+   ====================== */
+#tela6 {
+  background: radial-gradient(circle at top, #0c0f1c 0%, #0b0d23 100%);
+  color: #fff;
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+#tela6 .t6-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#tela6 .t6-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#tela6 .t6-subtitle {
+  font-size: 1.4rem;
+  color: #ccc;
+  margin-bottom: 4rem;
+}
+
+#tela6 .t6-cards {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#tela6 .t6-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+#tela6 .t6-card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#tela6 .t6-card-icon.blue { background: #3142ff; }
+#tela6 .t6-card-icon.orange { background: #e09f7d; }
+
+#tela6 .t6-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+#tela6 .t6-text {
+  font-size: 1.2rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+#tela6 .t6-text .highlight {
+  color: #fff;
+  font-weight: 600;
+}
+
+#tela6 .t6-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+#tela6 .badge {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge.red { background: #c0392b; }
+.badge.orange { background: #e67e22; }
+.badge.yellow { background: #f1c40f; color: #000; }
+.badge.green { background: #27ae60; }
+
+.badge.blue2 { background: #3142ff; }
+.badge.green2 { background: #27ae60; }
+.badge.purple { background: #8e44ad; }
+
+#tela6 .t6-card-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: .5rem;
+  font-size: .9rem;
+  color: #ccc;
+}
+
+/* ======================
+   FOOTER
+   ====================== */
+#footer {
+  background: #fff;
+  padding-top: 2rem;
+  border-top: 1px solid #ddd;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.footer-left {
+  max-width: 300px;
+}
+
+.footer-logo {
+  width: 140px;
+  margin-bottom: 1rem;
+}
+
+.footer-left p {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.footer-links h4 {
+  font-size: 1.2rem;
+  margin-bottom: .8rem;
+  color: #333;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: .6rem;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: #555;
+  font-size: 1rem;
+}
+
+.footer-links ul li a:hover {
+  color: #e09f7d;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+  font-size: .9rem;
+  color: #555;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  #tela6 .t6-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
