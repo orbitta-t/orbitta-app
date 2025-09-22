@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -56,8 +62,8 @@ header {
     background-color: #000303;
     height: 5vh;
     position: fixed;
-    width: 100%;
-    border-radius: 1vh;
+    width: 99.2%;
+    border-radius: 0.7vh;
     z-index: 10;
 }
 #header1{
@@ -254,6 +260,10 @@ header {
 .text{
     font-size: 3vh;
 }
+.texth{
+  font-size: 2vh;
+  align-self: center;
+}
 .margin1{
   margin-top: 10vh;
 }
@@ -410,10 +420,10 @@ header {
 
 /* wrapper centralizado */
 #tela3 .t3-inner {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
-  margin-top: 50vh;
+  margin-top: 20vh;
 }
 
 /* título centralizado (mantém aparência semelhante ao seu design) */
@@ -442,19 +452,22 @@ header {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  align-self: center;
 }
 
 /* cartão maior */
 #tela3 .t3-card-large {
-  width: 360px;
-  height: 230px;
+  width: 660px;
+  height: 310px;
   background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 16px 30px rgba(9,11,15,0.08);
+  border-radius: 16px;
+  box-shadow: 0 26px 30px rgba(9,11,15,0.08);
   position: relative;
   overflow: visible;
 }
-
+.reverse{
+  filter: invert(1);
+}
 /* bolinha no canto superior direito do cartão maior */
 #tela3 .t3-card-dot {
   position: absolute;
@@ -471,14 +484,14 @@ header {
 
 /* cartão menor sobreposto (posicionado relativamente ao .t3-left) */
 #tela3 .t3-card-small {
-  width: 220px;
-  height: 140px;
+  width: 460px;
+  height: 220px;
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 16px 30px rgba(9,11,15,0.08);
+  border-radius: 16px;
+  box-shadow: 0 26px 30px rgba(9,11,15,0.08);
   position: absolute;
   top: 130px;
-  left: 240px;
+  left: 220px;
   transform: translateX(12px);
 }
 
@@ -533,6 +546,13 @@ header {
   color: #0b0d23;
   line-height: 1.5;
   max-width: 44ch;
+}
+
+#tela3 .t3-card-large img, #tela3 .t3-card-small img{
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+
 }
 
 /* Responsividade: em telas pequenas empilha as colunas */
@@ -590,6 +610,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-left: 4vh;
 }
 
 #tela4 .t4-feature {
@@ -615,7 +636,7 @@ header {
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0;
-  color: #E09F7D;
+  color: #432413;
 }
 
 #tela4 .t4-text p {
@@ -632,8 +653,8 @@ header {
 
 #tela4 .t4-card {
   position: relative;
-  width: 300px;
-  height: 380px;
+  width: 500px;
+  height: 580px;
   background: linear-gradient(to bottom, #F7C9AE 0%, #ffffff 50%, #E09F7D 100%);
   border-radius: 18px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -650,7 +671,7 @@ header {
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 220px;
+  width: 468px;
   z-index: 2;
 }
 
@@ -721,8 +742,8 @@ header {
 
 #tela5 .t5-card {
   position: relative;
-  width: 300px;
-  height: 380px;
+  width: 500px;
+  height: 580px;
   background: linear-gradient(to bottom, #F7C9AE 0%, #ffffff 50%, #E09F7D 100%);
   border-radius: 18px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -738,7 +759,7 @@ header {
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 220px;
+  width: 468px;
   z-index: 2;
 }
 
@@ -774,21 +795,21 @@ header {
   align-items: center;
   justify-content: flex-end; /* <-- Mantém tudo alinhado à direita */
   gap: 1.5rem; /* Espaço fixo entre o texto e o ícone */
-  margin-right: 15vh;
+  margin-right: 4vh;
 }
 
 #tela5 .t5-text h3 {
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0;
-  color: #4a4a4a;
+  color: 432413;
   text-align: right;
 }
 
 #tela5 .t5-text p {
   font-size: 1.4rem;
   margin: 0;
-  color: #0b0d23;
+  color: 432413;
   text-align: right;
 }
 
