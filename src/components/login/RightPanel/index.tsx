@@ -8,7 +8,6 @@ const RightPanel: React.FC = () => {
             
             <div className="form-container">
                 <h2 className="text-red-300">Acessar plataforma</h2>
-                <h3 className="text-amber-200">olla</h3>
                 <form>
                     <label htmlFor="email-username">E-mail ou usuário</label>
                     <input type="email" id="email-username" name="email_username" required />
