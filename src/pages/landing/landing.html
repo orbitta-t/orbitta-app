@@ -28,6 +28,24 @@
             color: #ffffff;
         }
 
+        img, .notselect {
+          user-select: none;
+          -webkit-user-select: none; /* Safari */
+          -moz-user-select: none;    /* Firefox */
+          -ms-user-select: none;     /* IE/Edge */
+        }
+
+        ::selection {
+           background: #e09f7d;   /* Cor de fundo da seleção */
+          color: black;          /* Cor do texto selecionado */
+        }
+
+/* Para compatibilidade com Firefox */
+        ::-moz-selection {
+           background: #e09f7d;
+           color: black;
+        }
+
         /* ======== REATORAÇÃO DA NAVBAR (HEADER) PARA EFEITO GLASSMORPHISM ======== */
         .navbar {
             display: flex;
@@ -664,7 +682,7 @@
 
 <header class="navbar">
   <div class="navbar-logo">
-    <img src="/src/pages/landing/img/logo.png" alt="Orbitta Logo" >
+    <img src="/src/pages/landing/img/logo.png" alt="Orbitta Logo" draggable="false" style="user-drag: none; -webkit-user-drag: none;" >
   </div>
   <nav class="navbar-links">
     <a href="#tela1" class="nav-link active">Início</a>
@@ -698,12 +716,12 @@
     
     <div class="absolute cbox" style="display: none;"> <!-- Ocultado para não interferir no novo layout do hero -->
         <div id="titleiconbox">
-            <img class="icon absolute float" src="/src/pages/landing/img/titleobj1.svg">
-            <img class="icon absolute" src="/src/pages/landing/img/titlepers1.svg">
+            <img class="icon absolute float" src="/src/pages/landing/img/titleobj1.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+            <img class="icon absolute" src="/src/pages/landing/img/titlepers1.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
         </div>
         <div id="titleiconbox2">
-            <img class="icon absolute float" src="/src/pages/landing/img/titleobj2.svg">
-            <img class="icon absolute" src="/src/pages/landing/img/titlepers2.svg">
+            <img class="icon absolute float" src="/src/pages/landing/img/titleobj2.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+            <img class="icon absolute" src="/src/pages/landing/img/titlepers2.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
         </div>
     </div>
 </section>
@@ -722,10 +740,10 @@
                 <p class="text">Apesar de 70% dos profissionais de TI considerarem o feedback regular fundamental, a maioria não o recebe. Essa desconexão gera desmotivação, ansiedade e um sentimento de que o trabalho não está sendo visto.</p>
             </div>
                 <div class="imgset1">
-                    <img class="absolute icon float" src="/src/pages/landing/img/iconback.svg">
-                    <img class="absolute icon float" src="/src/pages/landing/img/iconobj1.svg">
-                    <img class="absolute icon float" src="/src/pages/landing/img/iconpers1.svg">
-                    <img class="absolute icon float" src="/src/pages/landing/img/iconpers2.svg">
+                    <img class="absolute icon float" src="/src/pages/landing/img/iconback.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+                    <img class="absolute icon float" src="/src/pages/landing/img/iconobj1.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+                    <img class="absolute icon float" src="/src/pages/landing/img/iconpers1.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+                    <img class="absolute icon float" src="/src/pages/landing/img/iconpers2.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
                 </div>
         </div>
 
@@ -735,10 +753,10 @@
                 <p class="text">Apenas 64% das empresas brasileiras possuem um processo formal de avaliação de desempenho. Sem ele, líderes e equipes ficam sem uma direção clara para o crescimento, gerando um ciclo de ineficiência e incerteza.</p>
             </div>
                 <div class="imgset2">
-                <img class="absolute icon float" src="/src/pages/landing/img/backgoal1.svg">
-                    <img class="absolute icon float" src="/src/pages/landing/img/spark.svg">
-                    <img class="absolute icon float" src="/src/pages/landing/img/goal2.svg">
-                    <img class="absolute icon float" src="/src/pages/landing/img/goal1.svg">
+                <img class="absolute icon float" src="/src/pages/landing/img/backgoal1.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+                    <img class="absolute icon float" src="/src/pages/landing/img/spark.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+                    <img class="absolute icon float" src="/src/pages/landing/img/goal2.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+                    <img class="absolute icon float" src="/src/pages/landing/img/goal1.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
                 </div>
         </div>
 
@@ -748,10 +766,10 @@
                 <p class="text">Para 43% dos profissionais de TI, a falta de um plano de carreira claro é o principal motivo para a troca de emprego. A ausência de perspectivas de crescimento se torna um alto custo de rotatividade para a empresa.</p>
             </div>
                 <div class="imgset1">
-                    <img class="absolute icon float" src="/src/pages/landing/img/iconback3.svg">
-                    <img class="absolute icon float" src="/src/pages/landing/img/iconobj3.svg">
-                    <img class="absolute icon float" src="/src/pages/landing/img/iconpers3.svg">
-                    <img class="absolute icon float" src="/src/pages/landing/img/iconobj4.svg">
+                    <img class="absolute icon float" src="/src/pages/landing/img/iconback3.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+                    <img class="absolute icon float" src="/src/pages/landing/img/iconobj3.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+                    <img class="absolute icon float" src="/src/pages/landing/img/iconpers3.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
+                    <img class="absolute icon float" src="/src/pages/landing/img/iconobj4.svg" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
                 </div>
         </div>
     </div>
@@ -764,26 +782,26 @@
 
     <div class="t3-grid">
       <div class="t3-left">
-        <div class="t3-card-large"><img src="/src/pages/landing/img/orb2.jfif"></div>
-        <div class="t3-card-small" aria-hidden="true"><img src="/src/pages/landing/img/orb1.jfif"></div>
+        <div class="t3-card-large"><img src="/src/pages/landing/img/orb2.jfif" draggable="false" style="user-drag: none; -webkit-user-drag: none;"></div>
+        <div class="t3-card-small" aria-hidden="true"><img src="/src/pages/landing/img/orb1.jfif" draggable="false" style="user-drag: none; -webkit-user-drag: none;"></div>
       </div>
       <div class="t3-right">
         <div class="t3-feature">
-          <div class="t3-feature-icon"><img src="/src/pages/landing/img/grap1.svg" alt=""></div>
+          <div class="t3-feature-icon"><img src="/src/pages/landing/img/grap1.svg" alt="" draggable="false" style="user-drag: none; -webkit-user-drag: none;"></div>
           <div class="t3-feature-text">
             <h2>Para o Líder</h2>
             <p>Oferece visibilidade total das competências da equipe, transformando gestão em liderança estratégica.</p>
           </div>
         </div>
         <div class="t3-feature">
-          <div class="t3-feature-icon t3-feature-icon--peach"><img src="/src/pages/landing/img/heart1.svg" alt=""></div>
+          <div class="t3-feature-icon t3-feature-icon--peach"><img src="/src/pages/landing/img/heart1.svg" alt="" draggable="false" style="user-drag: none; -webkit-user-drag: none;"></div>
           <div class="t3-feature-text">
             <h2>Para o Liderado</h2>
             <p>Cria um caminho claro de evolução profissional, conectando carreira e projetos.</p>
           </div>
         </div>
         <div class="t3-feature">
-          <div class="t3-feature-icon"><img src="/src/pages/landing/img/brief1.svg" alt=""></div>
+          <div class="t3-feature-icon"><img src="/src/pages/landing/img/brief1.svg" alt="" draggable="false" style="user-drag: none; -webkit-user-drag: none;"></div>
           <div class="t3-feature-text">
             <h2>Para a Empresa</h2>
             <p>Garante retenção de talentos e acelera resultados, cultivando uma cultura de crescimento.</p>
@@ -800,28 +818,28 @@
     <div class="t4-grid">
       <div class="t4-left">
         <div class="t4-feature">
-          <div class="t4-icon"><span>✔</span></div>
+          <div class="t4-icon"><span class="notselect">✔</span></div>
           <div class="t4-text">
             <h3>Gráfico "VERSUS"</h3>
             <p>Compare as competências atuais do colaborador com o perfil ideal do cargo de forma visual e intuitiva.</p>
           </div>
         </div>
         <div class="t4-feature">
-          <div class="t4-icon"><span>✔</span></div>
+          <div class="t4-icon"><span class="notselect">✔</span></div>
           <div class="t4-text">
             <h3>Painel de Maturidade</h3>
             <p>Visualize a distribuição de maturidade (M1-M4) de toda a sua equipe em um único gráfico de quadrante.</p>
           </div>
         </div>
         <div class="t4-feature">
-          <div class="t4-icon"><span>✔</span></div>
+          <div class="t4-icon"><span class="notselect">✔</span></div>
           <div class="t4-text">
             <h3>Contextualize novos membros</h3>
             <p>rapidamente com uma página central de objetivos, links e responsabilidades.</p>
           </div>
         </div>
         <div class="t4-feature">
-          <div class="t4-icon"><span>✔</span></div>
+          <div class="t4-icon"><span class="notselect">✔</span></div>
           <div class="t4-text">
             <h3>Linha do Tempo</h3>
             <p>Registre e consulte feedbacks e marcos de desenvolvimento em um histórico cronológico e de fácil acesso.</p>
@@ -830,7 +848,7 @@
       </div>
       <div class="t4-right">
         <div class="t4-card">
-          <img class="t4-person" src="/src/pages/landing/img/lider.svg" alt="Líder Técnico">
+          <img class="t4-person" src="/src/pages/landing/img/lider.svg" alt="Líder Técnico" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
           <div class="t4-card-content">
             <h2>Líder Técnico</h2>
             <p>Dores do Líder</p>
@@ -846,7 +864,7 @@
     <div class="t5-grid">
       <div class="t5-left">
         <div class="t5-card">
-          <img class="t5-person" src="/src/pages/landing/img/liderado.svg" alt="Colaborador">
+          <img class="t5-person" src="/src/pages/landing/img/liderado.svg" alt="Colaborador" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
           <div class="t5-card-content">
             <h2>Colaborador</h2>
             <p>Dores do Liderado</p>
@@ -859,21 +877,21 @@
             <h3>Histórico de Feedback</h3>
             <p>Consulte feedbacks salvos em linha cronológica para compreender os pontos fortes e pontos de melhoria.</p>
           </div>
-          <div class="t5-icon"><span>✔</span></div>
+          <div class="t5-icon"><span class="notselect">✔</span></div>
         </div>
         <div class="t5-feature">
           <div class="t5-text">
             <h3>Trilha de Desenvolvimento</h3>
             <p>Tenha acesso a uma trilha de desenvolvimento criado pelo próprio Líder para guiá-lo no projeto.</p>
           </div>
-          <div class="t5-icon"><span>✔</span></div>
+          <div class="t5-icon"><span class="notselect">✔</span></div>
         </div>
         <div class="t5-feature">
           <div class="t5-text">
             <h3>Onboarding do projeto</h3>
             <p>Integração rápida e eficiente de novos membros à equipe e ao projeto.</p>
           </div>
-          <div class="t5-icon"><span>✔</span></div>
+          <div class="t5-icon"><span class="notselect">✔</span></div>
         </div>
       </div>
     </div>
@@ -886,7 +904,7 @@
     <p class="t6-subtitle">Nossa metodologia é baseada em ciência, não em achismos</p>
     <div class="t6-cards">
       <div class="t6-card">
-        <div class="t6-card-icon blue">⚡</div>
+        <div class="t6-card-icon blue notselect">⚡</div>
         <h2>Liderança Situacional</h2>
         <p class="t6-text">
           "Defende que não existe um único estilo de liderança eficaz. O líder deve adaptar sua postura de acordo com o 
@@ -894,10 +912,10 @@
           a aplicação dessa teoria, permitindo que líderes ajustem seus métodos de gestão em tempo real."
         </p>
         <div class="t6-card-bottom">
-          <span class="badge red">M1</span>
-          <span class="badge orange">M2</span>
-          <span class="badge yellow">M3</span>
-          <span class="badge green">M4</span>
+          <span class="badge red notselect">M1</span>
+          <span class="badge orange notselect">M2</span>
+          <span class="badge yellow notselect">M3</span>
+          <span class="badge green notselect">M4</span>
         </div>
         <div class="t6-card-labels">
           <span>Iniciante</span>
@@ -907,7 +925,7 @@
         </div>
       </div>
       <div class="t6-card">
-        <div class="t6-card-icon orange">📊</div>
+        <div class="t6-card-icon orange notselect">📊</div>
         <h2>Gestão por Competências</h2>
         <p class="t6-text">
           "Define competência como um conjunto integrado de 
@@ -918,9 +936,9 @@
           garantindo que o talento cresça de forma orientada."
         </p>
         <div class="t6-card-bottom">
-          <span class="badge blue2">K</span>
-          <span class="badge green2">S</span>
-          <span class="badge purple">A</span>
+          <span class="badge blue2 notselect">K</span>
+          <span class="badge green2 notselect">S</span>
+          <span class="badge purple notselect">A</span>
         </div>
         <div class="t6-card-labels">
           <span>Conhecimento</span>
@@ -935,7 +953,7 @@
 <footer id="footer">
   <div class="footer-inner">
     <div class="footer-left">
-      <img class="reverse icon2" src="/src/pages/landing/img/logo.png" alt="Orbitta Logo" >
+      <img class="reverse icon2" src="/src/pages/landing/img/logo.png" alt="Orbitta Logo" draggable="false" style="user-drag: none; -webkit-user-drag: none;">
       <p>Do ponto de partida ao sucesso, uma plataforma que sincroniza a estratégia e o desempenho de toda a equipe.</p>
     </div>
 
