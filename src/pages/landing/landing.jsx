@@ -166,7 +166,6 @@ function Landing() {
         </div>
       </div>
     </section>
-  );
 
       {/* Section 3 */}
       <section id="tela3">
@@ -312,7 +311,7 @@ function Landing() {
         <h2>Liderança Situacional</h2>
         <p className="t6-text">
           "Defende que não existe um único estilo de liderança eficaz. O líder deve adaptar sua postura de acordo com o 
-          <span className="highlight">nível de maturidade do liderado (M1 a M4)</span>. A Orbitta oferece recursos que facilitam 
+          <span className="highlight margA">nível de maturidade do liderado (M1 a M4)</span>. A Orbitta oferece recursos que facilitam 
           a aplicação dessa teoria, permitindo que líderes ajustem seus métodos de gestão em tempo real."
         </p>
         <div className="t6-card-bottom">
@@ -333,9 +332,9 @@ function Landing() {
         <h2>Gestão por Competências</h2>
         <p className="t6-text">
           "Define competência como um conjunto integrado de 
-          <span className="highlight">conhecimentos (saber)</span>, 
-          <span className="highlight">habilidades (saber fazer)</span> 
-          e <span className="highlight">atitudes (querer fazer)</span>.
+          <span className="highlight margA">conhecimentos (saber)</span>, 
+          <span className="highlight margA margB">habilidades (saber fazer)</span> 
+          e <span className="highlight marg">atitudes (querer fazer)</span>.
           Na Orbitta, isso se traduz em trilhas personalizadas de desenvolvimento e uma visão clara de gaps individuais,
           garantindo que o talento cresça de forma orientada."
         </p>
@@ -364,6 +363,9 @@ function Landing() {
               Do ponto de partida ao sucesso, uma plataforma que sincroniza a estratégia e o desempenho de toda a equipe.
             </p>
           </div>
+
+          <div class="footer-divider"></div>
+
           <div className="footer-links">
             <h4>Plataforma</h4>
             <ul>
