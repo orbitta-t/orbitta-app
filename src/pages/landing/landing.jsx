@@ -4,6 +4,7 @@ import "./landing.css";
 
 import Login from "../LoginPage/index";
 import { useNavigate } from "react-router-dom";
+import useScrollSpy from "../../components/Landing/ScrollSpy/activenavbar"
 
 import NavbarEffect from "../../components/Landing/Navbar/navbar";
 import FloatEffect from "../../components/Landing/Float/float";
@@ -30,6 +31,7 @@ import iconobj4 from "./img/iconobj4.svg";
 
 function Landing() {
   const navigate = useNavigate();
+  const active = useScrollSpy(["tela1", "tela2b", "tela3", "tela4", "tela6"]);
   return (
     <div>
       <NavbarEffect />
@@ -42,11 +44,11 @@ function Landing() {
           <img src={logo} alt="Orbitta Logo" draggable="false" />
         </div>
         <nav className="navbar-links">
-          <a href="#tela1" className="nav-link active">Início</a>
-          <a href="#tela2b" className="nav-link">O problema</a>
-          <a href="#tela3" className="nav-link">A solução</a>
-          <a href="#tela4" className="nav-link">Funcionalidades</a>
-          <a href="#tela6" className="nav-link">Nossa Órbita</a>
+          <a href="#tela1" className={`nav-link ${active === "tela1" ? "active" : ""}`}>Início</a>
+          <a href="#tela2b" className={`nav-link ${active === "tela2b" ? "active" : ""}`}>O problema</a>
+          <a href="#tela3" className={`nav-link ${active === "tela3" ? "active" : ""}`}>A solução</a>
+          <a href="#tela4" className={`nav-link ${active === "tela4" ? "active" : ""}`}>Funcionalidades</a>
+          <a href="#tela6" className={`nav-link ${active === "tela6" ? "active" : ""}`}>Nossa Órbita</a>
         </nav>
         <div className="navbar-actions">
           <button className="navbar-btn" onClick={() => navigate("/login")}>Entrar</button>
