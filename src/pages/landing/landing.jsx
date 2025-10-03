@@ -29,6 +29,7 @@ import iconpers3 from "./img/iconpers3.svg";
 import iconobj4 from "./img/iconobj4.svg";
 
 function Landing() {
+  const navigate = useNavigate();
   return (
     <div>
       <NavbarEffect />

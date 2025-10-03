@@ -1,11 +1,15 @@
-// src/App.tsx
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Landing from "./pages/landing/landing.jsx";
+import Login from "./pages/LoginPage/index.jsx";
 
-import React from 'react';
-import Landing from './pages/landing/landing.jsx';
-
-const App: React.FC = () => {
+function App() {
   return (
-    <Landing />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 
