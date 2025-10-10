@@ -4,55 +4,24 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend, ResponsiveContainer } from "recharts";
-
-const teamMembers = [
-  { id: "1", name: "Ana Silva", role: "Estagiário", initials: "AS" },
-  { id: "2", name: "Pedro Santos", role: "Especialista I", initials: "PS" },
-  { id: "3", name: "Mariana Costa", role: "Senior", initials: "MC" },
-  { id: "4", name: "Roberto Lima", role: "Pleno", initials: "RL" },
-];
-
-const memberScores: Record<string, any[]> = {
-  "1": [
-    { competency: "Comunicação", score: 3 },
-    { competency: "Trabalho em Equipe", score: 4 },
-    { competency: "Aprendizado", score: 3 },
-    { competency: "Iniciativa", score: 3 },
-    { competency: "Adaptabilidade", score: 4 },
-  ],
-  "2": [
-    { competency: "Comunicação", score: 5 },
-    { competency: "Trabalho em Equipe", score: 5 },
-    { competency: "Aprendizado", score: 4 },
-    { competency: "Iniciativa", score: 4 },
-    { competency: "Adaptabilidade", score: 5 },
-  ],
-  "3": [
-    { competency: "Comunicação", score: 5 },
-    { competency: "Trabalho em Equipe", score: 5 },
-    { competency: "Aprendizado", score: 5 },
-    { competency: "Iniciativa", score: 4 },
-    { competency: "Adaptabilidade", score: 5 },
-  ],
-  "4": [
-    { competency: "Comunicação", score: 4 },
-    { competency: "Trabalho em Equipe", score: 4 },
-    { competency: "Aprendizado", score: 4 },
-    { competency: "Iniciativa", score: 4 },
-    { competency: "Adaptabilidade", score: 4 },
-  ],
-};
+import { useMockComparison } from "@/hooks/useMockComparison";
 
 export default function Compare() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const memberIds = searchParams.get("members")?.split(",") || [];
   
-  const selectedMembers = memberIds
-    .map(id => teamMembers.find(m => m.id === id))
-    .filter(Boolean);
+  const { members, radarData, isLoading } = useMockComparison(memberIds);
 
-  if (selectedMembers.length < 2) {
+  if (isLoading) {
+    return (
+      <div className="p-8">
+        <p className="text-muted-foreground">Carregando...</p>
+      </div>
+    );
+  }
+
+  if (members.length < 2) {
     return (
       <div className="p-8">
         <Button 
@@ -67,14 +36,6 @@ export default function Compare() {
       </div>
     );
   }
-
-  const radarData = memberScores[selectedMembers[0]!.id].map((item, index) => {
-    const dataPoint: any = { competency: item.competency };
-    selectedMembers.forEach((member) => {
-      dataPoint[member!.name] = memberScores[member!.id][index].score;
-    });
-    return dataPoint;
-  });
 
   const colors = ["hsl(var(--primary))", "hsl(var(--chart-2))", "hsl(var(--chart-3))", "hsl(var(--chart-4))"];
 
@@ -92,34 +53,39 @@ export default function Compare() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-2">Comparação de Liderados</h1>
         <p className="text-muted-foreground">
-          {selectedMembers.length} colaboradores selecionados para comparação
+          {members.length} colaboradores selecionados para comparação
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        {selectedMembers.map((member) => (
-          <Card key={member!.id} className="p-6">
+        {members.map((member) => (
+          <Card key={member.id} className="p-6">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-lg font-bold text-primary">{member!.initials}</span>
+                <span className="text-lg font-bold text-primary">{member.initials}</span>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-foreground">{member!.name}</h3>
-                <Badge variant="secondary">{member!.role}</Badge>
+                <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
+                <div className="flex gap-2 items-center">
+                  <Badge variant="secondary">{member.role}</Badge>
+                  <Badge className="bg-primary/10 text-primary hover:bg-primary/20">
+                    {member.maturityLevel}
+                  </Badge>
+                </div>
               </div>
             </div>
             
             <div className="space-y-3">
-              {memberScores[member!.id].map((comp) => (
-                <div key={comp.competency}>
+              {member.competencias.map((comp) => (
+                <div key={comp.nome}>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm text-muted-foreground">{comp.competency}</span>
-                    <span className="text-sm font-semibold text-foreground">{comp.score}/5</span>
+                    <span className="text-sm text-muted-foreground">{comp.nome}</span>
+                    <span className="text-sm font-semibold text-foreground">{comp.pontuacao}/5</span>
                   </div>
                   <div className="h-2 bg-secondary rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-primary rounded-full transition-all duration-500" 
-                      style={{ width: `${(comp.score / 5) * 100}%` }} 
+                      style={{ width: `${(comp.pontuacao / 5) * 100}%` }} 
                     />
                   </div>
                 </div>
@@ -153,11 +119,11 @@ export default function Compare() {
               tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }}
               stroke="hsl(var(--muted-foreground) / 0.3)"
             />
-            {selectedMembers.map((member, index) => (
+            {members.map((member, index) => (
               <Radar
-                key={member!.id}
-                name={member!.name}
-                dataKey={member!.name}
+                key={member.id}
+                name={member.name}
+                dataKey={member.name}
                 stroke={colors[index]}
                 fill={colors[index]}
                 fillOpacity={0.4}

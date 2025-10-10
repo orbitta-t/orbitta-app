@@ -195,12 +195,40 @@ export const mockAvaliacoes: Avaliacao[] = [
 
 // ============= PONTUAÇÕES DETALHADAS =============
 export const mockPontuacoes: PontuacaoAvaliacao[] = [
-  // Ana Silva - Comportamentais
+  // Ana Silva (Estagiária) - Comportamentais
   { id_avaliacao: "aval-01", id_competencia: "comp-comportamental-01", pontuacao: 4 },
   { id_avaliacao: "aval-01", id_competencia: "comp-comportamental-02", pontuacao: 5 },
   { id_avaliacao: "aval-01", id_competencia: "comp-comportamental-03", pontuacao: 3 },
   { id_avaliacao: "aval-01", id_competencia: "comp-comportamental-04", pontuacao: 4 },
   { id_avaliacao: "aval-01", id_competencia: "comp-comportamental-05", pontuacao: 4 },
+  
+  // Ana Silva - Técnicas (Desenvolvimento Web)
+  { id_avaliacao: "aval-01", id_competencia: "comp-tecnica-html-css", pontuacao: 4 },
+  { id_avaliacao: "aval-01", id_competencia: "comp-tecnica-javascript", pontuacao: 3 },
+  { id_avaliacao: "aval-01", id_competencia: "comp-tecnica-react", pontuacao: 2 },
+  { id_avaliacao: "aval-01", id_competencia: "comp-tecnica-nodejs", pontuacao: 1 },
+  { id_avaliacao: "aval-01", id_competencia: "comp-tecnica-apis", pontuacao: 2 },
+  
+  // Pedro Santos (Especialista I) - Comportamentais
+  { id_avaliacao: "aval-02", id_competencia: "comp-comportamental-01", pontuacao: 4 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-comportamental-02", pontuacao: 4 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-comportamental-03", pontuacao: 3 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-comportamental-04", pontuacao: 4 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-comportamental-05", pontuacao: 4 },
+  
+  // Pedro Santos - Técnicas (BIG DATA/IA)
+  { id_avaliacao: "aval-02", id_competencia: "comp-tecnica-python", pontuacao: 5 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-tecnica-sql", pontuacao: 4 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-tecnica-ml", pontuacao: 4 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-tecnica-data-viz", pontuacao: 4 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-tecnica-statistics", pontuacao: 4 },
+  
+  // Pedro Santos - Técnicas (DevOps)
+  { id_avaliacao: "aval-02", id_competencia: "comp-tecnica-docker", pontuacao: 4 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-tecnica-kubernetes", pontuacao: 3 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-tecnica-ci-cd", pontuacao: 5 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-tecnica-cloud", pontuacao: 4 },
+  { id_avaliacao: "aval-02", id_competencia: "comp-tecnica-monitoring", pontuacao: 4 },
 ];
 
 // ============= HELPER PARA BUSCAR DADOS =============
