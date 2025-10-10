@@ -26,11 +26,11 @@ export const Sidebar = () => {
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-sidebar border-r border-sidebar-border flex flex-col">
       <div className="p-6 border-b border-sidebar-border">
-        <div className="flex items-center gap-3">
-          <img src={logo} alt="ORBITTA" className="h-10 w-auto" />
-          <div>
-            <h1 className="text-xl font-bold text-sidebar-foreground">ORBITTA</h1>
-            <p className="text-xs text-sidebar-foreground/70">Dashboard do Líder</p>
+        <div className="flex items-center gap-2">
+          <img src={logo} alt="ORBITTA" className="h-8 w-auto flex-shrink-0" />
+          <div className="min-w-0 flex-1">
+            <h1 className="text-lg font-bold text-sidebar-foreground truncate">ORBITTA</h1>
+            <p className="text-xs text-sidebar-foreground/70 truncate">Dashboard do Líder</p>
           </div>
         </div>
       </div>
