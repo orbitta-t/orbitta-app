@@ -1,28 +1,31 @@
-import { Home, Users, ClipboardCheck, LogOut, Settings, TrendingUp } from "lucide-react";
+import { Home, Users, ClipboardCheck, LogOut, Settings, TrendingUp, BarChart3 } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { toast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/logo.png";
-
-const navItems = [
-  { to: "/", icon: Home, label: "Home" },
-  { to: "/team", icon: Users, label: "Liderados" },
-  { to: "/evaluation", icon: ClipboardCheck, label: "Avaliação" },
-  { to: "/personal-development", icon: TrendingUp, label: "Meu Desenvolvimento" },
-  { to: "/settings", icon: Settings, label: "Configurações" },
-];
 
 export const Sidebar = () => {
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
 
   const handleLogout = () => {
-    toast({
-      title: "Saindo...",
-      description: "Você foi desconectado com sucesso.",
-    });
-    // Aqui você adicionaria a lógica de logout real quando implementar autenticação
-    navigate("/");
+    logout();
+    navigate("/landing");
   };
+
+  // Filtrar items baseado no role do usuário
+  const allNavItems = [
+    { to: "/", icon: Home, label: "Home", roles: ['LIDER'] },
+    { to: "/team", icon: Users, label: "Liderados", roles: ['LIDER'] },
+    { to: "/compare", icon: BarChart3, label: "Comparar", roles: ['LIDER'] },
+    { to: "/evaluation", icon: ClipboardCheck, label: "Avaliação", roles: ['LIDER'] },
+    { to: "/personal-development", icon: TrendingUp, label: "Meu Desenvolvimento", roles: ['LIDERADO'] },
+    { to: "/settings", icon: Settings, label: "Configurações", roles: ['LIDER', 'LIDERADO'] },
+  ];
+
+  const navItems = allNavItems.filter(item => 
+    user && item.roles.includes(user.role)
+  );
 
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-sidebar border-r border-sidebar-border flex flex-col">
@@ -31,17 +34,23 @@ export const Sidebar = () => {
       </div>
 
       <div className="flex-1 p-4">
-        <div className="mb-6">
-          <div className="flex items-center gap-3 p-3 rounded-lg bg-sidebar-accent/50">
-            <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
-              <span className="text-sm font-semibold text-accent-foreground">MR</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-sidebar-foreground truncate">Marina Rodriguez</p>
-              <p className="text-xs text-sidebar-foreground/70 truncate">Tech Lead</p>
+        {user && (
+          <div className="mb-6">
+            <div className="flex items-center gap-3 p-3 rounded-lg bg-sidebar-accent/50">
+              <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
+                <span className="text-sm font-semibold text-accent-foreground">
+                  {user.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-sidebar-foreground truncate">{user.name}</p>
+                <p className="text-xs text-sidebar-foreground/70 truncate capitalize">
+                  {user.role.toLowerCase()}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         <nav className="space-y-1">
           {navItems.map((item) => (
