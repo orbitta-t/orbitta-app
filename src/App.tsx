@@ -11,6 +11,7 @@ import Evaluation from "./pages/Evaluation";
 import Settings from "./pages/Settings";
 import MemberDetail from "./pages/MemberDetail";
 import Compare from "./pages/Compare";
+import PersonalDevelopment from "./pages/PersonalDevelopment";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/team" element={<DashboardLayout><Team /></DashboardLayout>} />
           <Route path="/team/:memberId" element={<DashboardLayout><MemberDetail /></DashboardLayout>} />
           <Route path="/compare" element={<DashboardLayout><Compare /></DashboardLayout>} />
+          <Route path="/personal-development" element={<DashboardLayout><PersonalDevelopment /></DashboardLayout>} />
           <Route path="/evaluation" element={<DashboardLayout><EvaluationList /></DashboardLayout>} />
           <Route path="/evaluation/:memberId" element={<DashboardLayout><Evaluation /></DashboardLayout>} />
           <Route path="/settings" element={<DashboardLayout><Settings /></DashboardLayout>} />

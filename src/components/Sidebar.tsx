@@ -1,4 +1,4 @@
-import { Home, Users, ClipboardCheck, LogOut, Settings } from "lucide-react";
+import { Home, Users, ClipboardCheck, LogOut, Settings, TrendingUp } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
@@ -8,6 +8,7 @@ const navItems = [
   { to: "/", icon: Home, label: "Home" },
   { to: "/team", icon: Users, label: "Liderados" },
   { to: "/evaluation", icon: ClipboardCheck, label: "Avaliação" },
+  { to: "/personal-development", icon: TrendingUp, label: "Meu Desenvolvimento" },
   { to: "/settings", icon: Settings, label: "Configurações" },
 ];
 
