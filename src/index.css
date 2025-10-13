@@ -98,4 +98,9 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  .login-page {
+  background-color: hsl(227 60% 9%) !important;
+  color: hsl(0 0% 100%);
+}
 }
