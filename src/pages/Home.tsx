@@ -8,12 +8,13 @@ import { ChartSkeleton, MemberCardSkeleton } from "@/components/TeamSkeleton";
 import { ErrorMessage } from "@/components/ErrorMessage";
 
 // Dados mockados de gaps de competências técnicas (média de score da equipe por competência)
+// ATUALIZADO: Escala 1-4
 const skillGaps = [
-  { competencia: "Desenvolvimento de API", mediaScore: 2.1 },
-  { competencia: "SQL", mediaScore: 2.5 },
-  { competencia: "Testes Automatizados", mediaScore: 2.7 },
-  { competencia: "Docker & Kubernetes", mediaScore: 3.0 },
-  { competencia: "Python", mediaScore: 3.2 },
+  { competencia: "Desenvolvimento de API", mediaScore: 1.8 },
+  { competencia: "SQL", mediaScore: 2.2 },
+  { competencia: "Testes Automatizados", mediaScore: 2.4 },
+  { competencia: "Docker & Kubernetes", mediaScore: 2.7 },
+  { competencia: "Python", mediaScore: 2.9 },
 ];
 
 const leaderProfile = {
@@ -125,14 +126,14 @@ export default function Home() {
                 <div key={item.competencia} className="space-y-2">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground font-medium">{item.competencia}</span>
-                    <span className="font-semibold text-foreground">{item.mediaScore.toFixed(1)}/5.0</span>
+                    <span className="font-semibold text-foreground">{item.mediaScore.toFixed(1)}/4.0</span>
                   </div>
                   <div className="h-3 bg-secondary rounded-full overflow-hidden">
                     <div 
                       className="h-full rounded-full transition-all duration-500" 
                       style={{ 
-                        width: `${(item.mediaScore / 5) * 100}%`,
-                        backgroundColor: item.mediaScore < 2.5 ? 'hsl(var(--destructive))' : item.mediaScore < 3.5 ? 'hsl(var(--chart-2))' : 'hsl(var(--chart-3))'
+                        width: `${(item.mediaScore / 4) * 100}%`,
+                        backgroundColor: item.mediaScore < 2 ? 'hsl(var(--destructive))' : item.mediaScore < 3 ? 'hsl(var(--chart-2))' : 'hsl(var(--chart-3))'
                       }} 
                     />
                   </div>

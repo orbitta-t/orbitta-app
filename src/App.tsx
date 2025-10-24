@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { DashboardLayout } from "./components/DashboardLayout";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-import Landing from "./pages/landing/landing";
+import Landing from "./pages/landing/landing.tsx";
 import Login from "./pages/LoginPage/index";
 import Home from "./pages/Home";
 import Team from "./pages/Team";

@@ -21,15 +21,15 @@ const teamMembers = [
 ];
 
 const behavioralCompetencies = [
-  { id: 1, name: "Comunicação", weight: 2, max: 5 },
-  { id: 2, name: "Trabalho em Equipe", weight: 3, max: 5 },
-  { id: 3, name: "Capacidade de Aprendizado", weight: 3, max: 5 },
-  { id: 4, name: "Iniciativa", weight: 1, max: 5 },
-  { id: 5, name: "Adaptabilidade", weight: 2, max: 5 },
+  { id: 1, name: "Comunicação", weight: 2, max: 4 },
+  { id: 2, name: "Trabalho em Equipe", weight: 3, max: 4 },
+  { id: 3, name: "Capacidade de Aprendizado", weight: 3, max: 4 },
+  { id: 4, name: "Iniciativa", weight: 1, max: 4 },
+  { id: 5, name: "Adaptabilidade", weight: 2, max: 4 },
 ];
 
 const idealScores: Record<number, number> = {
-  1: 5, 2: 5, 3: 5, 4: 4, 5: 5
+  1: 4, 2: 4, 3: 4, 4: 3, 5: 4
 };
 
 interface TechnicalSkill {
@@ -51,7 +51,7 @@ export default function Evaluation() {
   const member = teamMembers.find(m => m.id === memberId);
   
   const [scores, setScores] = useState<Record<number, number>>({
-    1: 3, 2: 3, 3: 3, 4: 3, 5: 3
+    1: 2, 2: 2, 3: 2, 4: 2, 5: 2
   });
   
   const [technicalCategories, setTechnicalCategories] = useState<TechnicalCategory[]>([]);
@@ -226,7 +226,7 @@ export default function Evaluation() {
                 />
                 <PolarRadiusAxis 
                   angle={90} 
-                  domain={[0, 5]} 
+                  domain={[0, 4]} 
                   tick={{ fill: 'hsl(var(--muted-foreground))' }} 
                 />
                 <Radar
@@ -277,25 +277,38 @@ export default function Evaluation() {
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 max-h-96 overflow-y-auto">
-                  {technicalTemplates.map((template) => (
-                    <Card 
-                      key={template.id}
-                      className="p-4 hover:border-primary cursor-pointer transition-all"
-                      onClick={() => handleAddTemplateCategory(template)}
-                    >
-                      <h3 className="font-semibold text-foreground mb-2">{template.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-3">{template.description}</p>
-                      <div className="space-y-1">
-                        <p className="text-xs font-medium text-foreground">Competências incluídas:</p>
-                        {template.skills.slice(0, 3).map((skill) => (
-                          <p key={skill.id} className="text-xs text-muted-foreground">• {skill.name}</p>
-                        ))}
-                        {template.skills.length > 3 && (
-                          <p className="text-xs text-muted-foreground">+ {template.skills.length - 3} mais...</p>
-                        )}
-                      </div>
-                    </Card>
-                  ))}
+                  {technicalTemplates.map((template) => {
+                    const isAlreadyAdded = technicalCategories.some(cat => cat.name === template.name);
+                    
+                    return (
+                      <Card 
+                        key={template.id}
+                        className={`p-4 transition-all ${
+                          isAlreadyAdded 
+                            ? 'opacity-50 cursor-not-allowed bg-muted' 
+                            : 'hover:border-primary cursor-pointer'
+                        }`}
+                        onClick={() => !isAlreadyAdded && handleAddTemplateCategory(template)}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <h3 className="font-semibold text-foreground">{template.name}</h3>
+                          {isAlreadyAdded && (
+                            <Badge variant="secondary" className="text-xs">Já adicionada</Badge>
+                          )}
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-3">{template.description}</p>
+                        <div className="space-y-1">
+                          <p className="text-xs font-medium text-foreground">Competências incluídas:</p>
+                          {template.skills.slice(0, 3).map((skill) => (
+                            <p key={skill.id} className="text-xs text-muted-foreground">• {skill.name}</p>
+                          ))}
+                          {template.skills.length > 3 && (
+                            <p className="text-xs text-muted-foreground">+ {template.skills.length - 3} mais...</p>
+                          )}
+                        </div>
+                      </Card>
+                    );
+                  })}
                 </div>
               </DialogContent>
             </Dialog>

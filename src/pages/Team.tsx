@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus, Check, Search, ChevronDown, Users, Trash2 } from "lucide-react";
+import { Plus, Check, Search, ChevronDown, Users, Trash2, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -16,6 +16,11 @@ import { TeamSkeleton } from "@/components/TeamSkeleton";
 import { ErrorMessage } from "@/components/ErrorMessage";
 
 const allAreas = ["BIG DATA/IA", "Machine Learning", "Desenvolvimento"];
+const allEspecializacoes = ["Backend", "Frontend", "DevOps", "Cloud", "Mobile"];
+const allCompetencias = [
+  "Comunicação", "Trabalho em Equipe", "Liderança", 
+  "Python", "JavaScript", "SQL", "Docker", "AWS", "React"
+];
 
 export default function Team() {
   const navigate = useNavigate();
@@ -24,6 +29,8 @@ export default function Team() {
   const [searchName, setSearchName] = useState("");
   const [filterMaturityLevel, setFilterMaturityLevel] = useState<string>("all");
   const [filterArea, setFilterArea] = useState<string>("all");
+  const [filterEspecializacao, setFilterEspecializacao] = useState<string>("all");
+  const [filterCompetencia, setFilterCompetencia] = useState<string>("all");
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isSuccessDialogOpen, setIsSuccessDialogOpen] = useState(false);
   const [tempPassword, setTempPassword] = useState("");
@@ -85,8 +92,26 @@ export default function Team() {
       return false;
     }
     
+    // Filtro por especialização ou competência (simulado com áreas por enquanto)
+    if (filterEspecializacao !== "all") {
+      const hasEspecializacao = member.areas.some(area => 
+        area.toLowerCase().includes(filterEspecializacao.toLowerCase())
+      );
+      if (!hasEspecializacao) return false;
+    }
+    
     return true;
   }) || [];
+
+  // Ordenar por competência se filtro de competência estiver ativo
+  const sortedMembers = filterCompetencia !== "all" 
+    ? [...filteredMembers].sort((a, b) => {
+        // Simular score de competência (em produção, viria do banco)
+        const scoreA = Math.random() * 4 + 1;
+        const scoreB = Math.random() * 4 + 1;
+        return scoreB - scoreA;
+      })
+    : filteredMembers;
 
   return (
     <div className="flex min-h-screen bg-background">
@@ -144,6 +169,61 @@ export default function Team() {
                   ))}
                 </SelectContent>
               </Select>
+            </CollapsibleContent>
+          </Collapsible>
+
+          {/* NOVO: Filtro por Especialização */}
+          <Collapsible>
+            <CollapsibleTrigger className="flex items-center justify-between w-full">
+              <h3 className="font-semibold text-foreground uppercase text-sm">Especialização</h3>
+              <ChevronDown className="w-4 h-4 text-muted-foreground dark:text-accent" />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-3 space-y-3">
+              <Select value={filterEspecializacao} onValueChange={setFilterEspecializacao}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione especialização" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Todas</SelectItem>
+                  {allEspecializacoes.map((esp) => (
+                    <SelectItem key={esp} value={esp}>{esp}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </CollapsibleContent>
+          </Collapsible>
+
+          {/* NOVO: Busca de Talentos por Competência */}
+          <Collapsible>
+            <CollapsibleTrigger className="flex items-center justify-between w-full">
+              <div className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-primary" />
+                <h3 className="font-semibold text-foreground uppercase text-sm">Buscar Talento</h3>
+              </div>
+              <ChevronDown className="w-4 h-4 text-muted-foreground dark:text-accent" />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-3 space-y-3">
+              <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
+                <p className="text-xs text-muted-foreground mb-2">
+                  🎯 Encontre rapidamente quem tem melhor desempenho em uma competência
+                </p>
+              </div>
+              <Select value={filterCompetencia} onValueChange={setFilterCompetencia}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione competência" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Nenhuma selecionada</SelectItem>
+                  {allCompetencias.map((comp) => (
+                    <SelectItem key={comp} value={comp}>{comp}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {filterCompetencia !== "all" && (
+                <p className="text-xs text-muted-foreground italic">
+                  Ordenando por melhor desempenho em "{filterCompetencia}"
+                </p>
+              )}
             </CollapsibleContent>
           </Collapsible>
 
@@ -221,7 +301,7 @@ export default function Team() {
               <h1 className="text-3xl font-bold text-foreground">Liderados</h1>
             </div>
             <p className="text-muted-foreground">
-              {isLoading ? "Carregando..." : `${filteredMembers.length} ${filteredMembers.length === 1 ? 'liderado encontrado' : 'liderados encontrados'}`}
+              {isLoading ? "Carregando..." : `${sortedMembers.length} ${sortedMembers.length === 1 ? 'liderado encontrado' : 'liderados encontrados'}`}
             </p>
           </div>
         </div>
@@ -232,12 +312,23 @@ export default function Team() {
           <TeamSkeleton />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredMembers.map((member) => (
+          {sortedMembers.map((member, index) => (
             <Card 
               key={member.id} 
-              className="relative overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group"
+              className={`relative overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group ${
+                filterCompetencia !== "all" && index === 0 ? 'ring-2 ring-primary' : ''
+              }`}
               onClick={() => navigate(`/team/${member.id}`)}
             >
+              {/* Badge de Melhor Talento */}
+              {filterCompetencia !== "all" && index === 0 && (
+                <div className="absolute top-2 left-2 z-10">
+                  <Badge className="bg-primary text-primary-foreground gap-1">
+                    <Award className="w-3 h-3" />
+                    Top em {filterCompetencia}
+                  </Badge>
+                </div>
+              )}
               {/* Botões de Ação */}
               <div className="absolute top-4 right-4 z-10 flex gap-2">
                 {/* Botão Deletar */}
@@ -303,7 +394,7 @@ export default function Team() {
           </div>
         )}
 
-        {!isLoading && filteredMembers.length === 0 && (
+        {!isLoading && sortedMembers.length === 0 && (
           <div className="text-center py-12">
             <p className="text-muted-foreground">Nenhum liderado encontrado com os filtros selecionados.</p>
           </div>

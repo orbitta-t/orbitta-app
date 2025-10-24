@@ -1,14 +1,17 @@
-import { ArrowLeft, Target, Code2 } from "lucide-react";
+import { ArrowLeft, Target, Code2, Filter } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useParams, useNavigate } from "react-router-dom";
-import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend, ResponsiveContainer } from "recharts";
+import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, CartesianGrid } from "recharts";
 import { useMockMemberDetail } from "@/hooks/useMockMemberDetail";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useState } from "react";
 
 export default function MemberDetail() {
   const { memberId } = useParams();
   const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   
   const { data: member, isLoading } = useMockMemberDetail(memberId || '');
 
@@ -35,6 +38,30 @@ export default function MemberDetail() {
       </div>
     );
   }
+
+  // Categorias disponíveis
+  const categories = ["all", ...member.especializacoes.map((esp: any) => esp.categoria)];
+  
+  // Filtrar competências por categoria
+  const filteredCompetencias = selectedCategory === "all" 
+    ? member.especializacoes.flatMap((esp: any) => 
+        esp.competencias.map((comp: any) => ({
+          nome: comp.nome,
+          atual: comp.pontuacao,
+          ideal: 4, // Nota ideal padrão
+          categoria: esp.categoria
+        }))
+      )
+    : member.especializacoes
+        .filter((esp: any) => esp.categoria === selectedCategory)
+        .flatMap((esp: any) => 
+          esp.competencias.map((comp: any) => ({
+            nome: comp.nome,
+            atual: comp.pontuacao,
+            ideal: 4,
+            categoria: esp.categoria
+          }))
+        );
 
 
   return (
@@ -79,7 +106,7 @@ export default function MemberDetail() {
                     dataKey="nome" 
                     tick={{ fill: 'hsl(var(--foreground))', fontSize: 11, fontWeight: 500 }}
                   />
-                  <PolarRadiusAxis angle={90} domain={[0, 5]} tick={{ fill: 'hsl(var(--muted-foreground))' }} />
+                  <PolarRadiusAxis angle={90} domain={[0, 4]} tick={{ fill: 'hsl(var(--muted-foreground))' }} />
                   <Radar
                     name="Avaliação Atual"
                     dataKey="atual"
@@ -120,7 +147,7 @@ export default function MemberDetail() {
                     <div className="flex-1">
                       <p className="font-medium text-foreground mb-1">{item.nome}</p>
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <span>{item.atual} / 5</span>
+                        <span>{item.atual} / 4</span>
                         <span className="text-xs">vs. meta {item.ideal}</span>
                       </div>
                     </div>
@@ -145,38 +172,96 @@ export default function MemberDetail() {
           </div>
         </Card>
 
-        {/* Competências Técnicas */}
+        {/* Competências Técnicas com Filtro por Categoria */}
         <Card className="p-8 backdrop-blur-sm bg-card/50 border-2">
-          <div className="flex items-center gap-3 mb-6">
-            <Code2 className="w-6 h-6 text-primary" />
-            <h2 className="text-xl font-semibold text-foreground">
-              Competências Técnicas
-            </h2>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <Code2 className="w-6 h-6 text-primary" />
+              <h2 className="text-xl font-semibold text-foreground">
+                Competências Técnicas
+              </h2>
+            </div>
+            
+            {/* Filtro de Categoria */}
+            <div className="flex items-center gap-2">
+              <Filter className="w-4 h-4 text-muted-foreground" />
+              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="Filtrar por categoria" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Todas as Categorias</SelectItem>
+                  {member.especializacoes.map((esp: any) => (
+                    <SelectItem key={esp.categoria} value={esp.categoria}>
+                      {esp.categoria}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {member.especializacoes.map((esp: any) => (
-              <div key={esp.categoria} className="p-4 rounded-lg border border-border bg-muted/30">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-semibold text-foreground">{esp.categoria}</h3>
-                  <Badge className="bg-primary/10 text-primary hover:bg-primary/20">
-                    {esp.nivel}
-                  </Badge>
-                </div>
-                <div className="space-y-2">
-                  {esp.competencias.map((comp: any) => (
-                    <div key={comp.nome} className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                        <span>{comp.nome}</span>
+            {member.especializacoes
+              .filter((esp: any) => selectedCategory === "all" || esp.categoria === selectedCategory)
+              .map((esp: any) => (
+                <div key={esp.categoria} className="p-4 rounded-lg border border-border bg-muted/30">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-semibold text-foreground">{esp.categoria}</h3>
+                    <Badge className="bg-primary/10 text-primary hover:bg-primary/20">
+                      {esp.nivel}
+                    </Badge>
+                  </div>
+                  <div className="space-y-2">
+                    {esp.competencias.map((comp: any) => (
+                      <div key={comp.nome} className="flex items-center justify-between text-sm">
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                          <span>{comp.nome}</span>
+                        </div>
+                        <span className="text-foreground font-medium">{comp.pontuacao}/4</span>
                       </div>
-                      <span className="text-foreground font-medium">{comp.pontuacao}/5</span>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
+
+          {/* Gráfico de Barras Comparativo */}
+          {filteredCompetencias.length > 0 && (
+            <div className="mt-8 pt-8 border-t border-border">
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Análise Comparativa: Atual vs Ideal
+                {selectedCategory !== "all" && ` - ${selectedCategory}`}
+              </h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={filteredCompetencias}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <XAxis 
+                    dataKey="nome" 
+                    tick={{ fill: 'hsl(var(--foreground))', fontSize: 11 }}
+                    angle={-45}
+                    textAnchor="end"
+                    height={100}
+                  />
+                  <YAxis 
+                    domain={[0, 4]}
+                    tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                  />
+                  <RechartsTooltip 
+                    contentStyle={{
+                      backgroundColor: 'hsl(var(--background))',
+                      border: '1px solid hsl(var(--border))',
+                      borderRadius: '6px'
+                    }}
+                  />
+                  <Legend />
+                  <Bar dataKey="atual" name="Nota Atual" fill="hsl(var(--primary))" />
+                  <Bar dataKey="ideal" name="Nota Ideal" fill="hsl(var(--chart-2))" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          )}
         </Card>
       </div>
     </div>
